@@ -6,8 +6,57 @@
    */
 
 // ======== OBJECTS DEFINITIONS ========
-// Define your objects here
+const man = {
+  species: 'human',
+  gender: 'male',
+  name: 'John',
+  age: 28,
+  hands: 2,
+  legs: 2,
+  hobby: 'fishing',
+  speack: () => {
+    console.log('Hello, people!');
+  }
+};
 
+const woman = {
+  species: 'human',
+  gender: 'female',
+  name: 'Anny',
+  age: 23,
+  hands: 2,
+  legs: 2,
+  hobby: 'cycling',
+  speack: () => {
+    console.log('Hello, everybody!');
+  }
+};
+
+const dog = {
+  species: 'dog',
+  gender: 'male',
+  name: 'Rex',
+  age: 3,
+  hands: 0,
+  legs: 4,
+  hobby: 'dig in bones',
+  speack: () => {
+    console.log('Wohw!');
+  }
+};
+
+const cat = {
+  species: 'cat',
+  gender: 'female',
+  name: 'Sida',
+  age: 1.5,
+  hands: 0,
+  legs: 4,
+  hobby: 'sleap',
+  speack: () => {
+    console.log('Meow!');
+  }
+};
 
 // ======== OUTPUT ========
 /* Use print(message) for output.
@@ -27,5 +76,3 @@
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
-
-
