@@ -14,9 +14,7 @@ const man = {
   hands: 2,
   legs: 2,
   hobby: 'fishing',
-  speack: () => {
-    console.log('Hello, people!');
-  }
+  speach: 'Hello, people!'
 };
 
 const woman = {
@@ -27,9 +25,7 @@ const woman = {
   hands: 2,
   legs: 2,
   hobby: 'cycling',
-  speack: () => {
-    console.log('Hello, everybody!');
-  }
+  speach: 'Hello, everybody!'
 };
 
 const dog = {
@@ -39,10 +35,8 @@ const dog = {
   age: 3,
   hands: 0,
   legs: 4,
-  hobby: 'dig in bones',
-  speack: () => {
-    console.log('Wohw!');
-  }
+  hobby: 'diging bones',
+  speach: 'Wohw!'
 };
 
 const cat = {
@@ -52,20 +46,39 @@ const cat = {
   age: 1.5,
   hands: 0,
   legs: 4,
-  hobby: 'sleap',
-  speack: () => {
-    console.log('Meow!');
-  }
+  hobby: 'sleaping',
+  speach: 'Meow!'
 };
 
-// ======== OUTPUT ========
-/* Use print(message) for output.
-   Default tag for message is <pre>. Use print(message,'div') to change containing element tag.
+//Create massage from object properties
+const createMassage = obj => {
+  let species = obj['species'];
+  let gender = obj['gender'];
+  let name = obj['name'];
+  let age = obj['age'];
+  let hands = obj['hands'];
+  let legs = obj['legs'];
+  let hobby = obj['hobby'];
+  let speach = obj['speach'];
 
-   Message can contain HTML markup. You may also tweak index.html and/or styles.css.
-   However, please, REFRAIN from improving visuals at least until your code is reviewed
-   so code reviewers might focus on a single file that is index.js.
-   */
+  let massage = `${speach} This is <strong>${obj.name}</strong>. `;
+
+  if (gender === 'male') {
+    return (massage += `He is a ${obj.species} (with ${obj.hands} hands and ${
+      obj.legs
+    } legs), age: ${obj.age}.\n He enjoy of ${obj.hobby}.`);
+  } else if (gender === 'female') {
+    return (massage += `She is a ${obj.species} (with ${obj.hands} hands and ${
+      obj.legs
+    } legs), age: ${obj.age}.\n She enjoy of ${obj.hobby}.`);
+  }
+  return massage;
+};
+// ======== OUTPUT ========
+print(createMassage(man));
+print(createMassage(woman));
+print(createMassage(dog));
+print(createMassage(cat));
 
 /* Print examples:
    print('ABC');
