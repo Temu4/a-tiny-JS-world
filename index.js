@@ -1,62 +1,83 @@
 // ======== OBJECTS DEFINITIONS ========
-const man = {
-  species: 'human',
-  gender: 'male',
-  name: 'John',
-  age: 28,
-  hands: 2,
-  legs: 2,
-  hobby: 'fishing',
-  speach: 'Hello, people!'
-};
+class Creature {
+  constructor(name, age, hobby, legs, species, gender) {
+    this.name = name;
+    this.age = age;
+    this.legs = legs;
+    this.hobby = hobby;
+    this.species = species;
+    this.gender = gender;
+  }
+}
 
-const woman = {
-  species: 'human',
-  gender: 'female',
-  name: 'Anny',
-  age: 23,
-  hands: 2,
-  legs: 2,
-  hobby: 'cycling',
-  speach: 'Hello, everybody!'
-};
+class Human extends Creature {
+  constructor(name, age, hobby, profession) {
+    super(name, age, hobby);
+    this.species = 'human';
+    this.hands = 2;
+    this.legs = 2;
+    this.profession = profession;
+  }
+}
 
-const dog = {
-  species: 'dog',
-  gender: 'male',
-  name: 'Rex',
-  age: 3,
-  hands: 0,
-  legs: 4,
-  hobby: 'diging bones',
-  speach: 'Wohw!'
-};
+class Man extends Human {
+  constructor(name, age, hobby, profession) {
+    super(name, age, hobby, profession);
+    this.gender = 'male';
+    this.greeting = this.greeting.bind(this);
+  }
+  greeting() {
+    return `Hello! My name is <strong>${this.name}</strong>. I'm ${this.age}. Little about me:
+    I'm a ${this.species}, ${this.gender}. I have ${this.hands} hands and ${this.legs} legs. My hobby is ${
+      this.hobby
+    }.`;
+  }
+}
 
-const cat = {
-  species: 'cat',
-  gender: 'female',
-  name: 'Sida',
-  age: 1.5,
-  hands: 0,
-  legs: 4,
-  hobby: 'sleaping',
-  speach: 'Meow!'
-};
+class Woman extends Human {
+  constructor(name, age, hobby, profession) {
+    super(name, age, hobby, profession);
+    this.gender = 'female';
+    this.greeting = this.greeting.bind(this);
+  }
+  greeting() {
+    return `Hi! I am <strong>${this.name}</strong>. I'm ${this.age}. I'm a ${this.species}, ${this.gender}.
+    I have ${this.hands} hands and ${this.legs} legs. I'm enjoy of ${this.hobby}.`;
+  }
+}
 
-//Create message from object properties
-const createMessage = obj => {
-  let msg1 = `\t${obj.speach} This is <strong>${obj.name}</strong>. `;
-  let msg2 = ` is a ${obj.species} (with ${obj.hands} hands and ${
-    obj.legs
-  } legs), age: ${obj.age}.\n`;
-  let msg3 = ` enjoy of ${obj.hobby}`;
+class Animal extends Creature {
+  constructor(name, age, hobby, species, skinColor) {
+    super(name, age, hobby, species);
+    this.legs = 4;
+    this.species = species;
+    this.skinColor = skinColor;
+    this.greeting = this.greeting.bind(this);
+  }
+  greeting() {
+    return `This is a ${this.species}. Its name is <strong>${this.name}</strong>. Age: ${this.age}.
+    It has ${this.skinColor} fur and ${this.legs} legs. It enjoy of ${this.hobby}.`;
+  }
+}
 
-  let message = '';
+class Cat extends Animal {
+  constructor(name, age, hobby, skinColor) {
+    super(name, age, hobby, skinColor);
+    this.species = 'cat';
+  }
+}
 
-  obj.gender === 'male' ? (person = 'He') : (person = 'She');
+class Dog extends Animal {
+  constructor(name, age, hobby, skinColor) {
+    super(name, age, hobby, skinColor);
+    this.species = 'dog';
+  }
+}
 
-  return (message += msg1 + person + msg2 + person + msg3);
-};
+const john = new Man('John', 28, 'fishing', 'engeneer');
+const anny = new Woman('Anny', 23, 'shoping', 'teacher');
+const rex = new Dog('Rex', 3, 'diging bones', 'white with black spots');
+const sida = new Cat('Sida', 1.5, 'sleeping', 'lightgrey');
 
-// ======== OUTPUT ========
-[man, woman, dog, cat].forEach(item => print(createMessage(item)));
+// // ======== OUTPUT ========
+[john, anny, rex, sida].forEach(item => print(item.greeting()));
